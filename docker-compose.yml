@@ -1,0 +1,15 @@
+version: "3"
+services:
+  rsnapshot:
+    container_name: Rsnap
+    image: blacklabelops/rsnapshot
+    restart: unless-stopped
+    volumes:
+      - /home/caf01/Cloud/Proxy/1_CAFCloud_Seafile:/data
+      - ./backups/:/snapshots
+    environment:
+      - BACKUP_DIRECTORIES=/data/ bkp/
+      - RSNAPSHOT_HOURLY_TIMES=12
+      - RSNAPSHOT_DAILY_TIMES=7
+      - RSNAPSHOT_WEEKLY_TIMES=4
+      - RSNAPSHOT_MONTHLY_TIMES=3
